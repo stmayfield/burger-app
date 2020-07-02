@@ -19,10 +19,11 @@ if (process.env.JAWSDB_URL) {
         database: "rlelx6qyre1np09o"
     });
 };
-
+/*
 connection.connect(function (err) {
     if (err) throw err;
     console.log(`Connected: ID ${connection.threadId}`);
 });
+*/
 
-module.exports = connection;
+module.exports = jawsConnect;
