@@ -1,3 +1,3 @@
 USE burgers_db;
 
-SELECT * FROM  burgers;
+SELECT * FROM burgers;

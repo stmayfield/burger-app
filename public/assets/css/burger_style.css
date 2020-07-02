@@ -1,0 +1,18 @@
+body {
+    background-color: linen;
+}
+
+h1 {
+    text-align: center;
+    color: #261801;
+    margin-left: 40px;
+}
+
+#burger-form {
+    text-align: center;
+
+}
+
+.btn-primary {
+    margin-top: 5pt;
+}

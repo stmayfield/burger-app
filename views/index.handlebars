@@ -1,1 +1,33 @@
-<!-- html tags -->
+<div class="container">
+
+    <h1>BURGER MEISTER MEISTER BURGER</h1>
+
+    <div class="row">
+        <div class="col-3">
+
+            {{burger}}
+
+            {{#if burger}}
+            {{/if}}
+
+
+
+
+        </div>
+        <div class="col-6">
+            <form action="/" id="burger-form" method="POST">
+                <label for="burger-input">Type your burger: </label>
+                <br>
+                <input type="textarea" id="burger-input" name="burger-input">
+                <br>
+                <input type="submit" class="btn btn-primary"></button>
+            </form>
+        </div>
+        <div class="col-3">
+
+
+
+        </div>
+    </div>
+
+</div>
