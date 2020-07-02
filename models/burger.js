@@ -7,17 +7,17 @@ const burger = {
             cb(res);
         });
 
-    }/*,
-    insertOne: function (val, cb) {
-        orm.insertOne("burgers", "burger_name", val, function (res) {
+    },
+    insertOne: function (cols, val, cb) {
+        orm.insertOne("burgers", cols, val, function (res) {
             cb(res);
         });
 
     },
-    
+
     updateOne: function () {
         orm.updateOne();
-    }*/
+    }
 };
 
 module.exports = burger;

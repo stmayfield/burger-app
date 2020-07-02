@@ -9,8 +9,9 @@ const app = express();
 // Location of static content
 app.use(express.static("public"));
 // Needed for POST and PUT requests
-app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 // Configures Express to use Handlebars
 

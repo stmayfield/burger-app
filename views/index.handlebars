@@ -1,33 +1,88 @@
+<style>
+    body {
+        background-color: linen;
+    }
+
+    h1 {
+        text-align: center;
+        color: #261801;
+        margin-left: 40px;
+    }
+
+    .burger-form {
+        text-align: center;
+
+    }
+
+    .btn-primary {
+        margin-top: 5pt;
+    }
+</style>
+
 <div class="container">
 
     <h1>BURGER MEISTER MEISTER BURGER</h1>
 
     <div class="row">
-        <div class="col-3">
+        <div class="col-3" id="new-burger-col">
 
-            {{burger}}
-
-            {{#if burger}}
-            {{/if}}
-
-
-
-
+            {{#each burger}}
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center">{{burger_name}}</h5>
+                </div>
+            </div>
+            {{/each}}
         </div>
         <div class="col-6">
-            <form action="/" id="burger-form" method="POST">
+            <form class="burger-form">
                 <label for="burger-input">Type your burger: </label>
                 <br>
-                <input type="textarea" id="burger-input" name="burger-input">
+                <input type="text" id="burger-input" name="burgerName">
                 <br>
                 <input type="submit" class="btn btn-primary"></button>
             </form>
         </div>
-        <div class="col-3">
-
-
-
+        <div class="col-3" id="devoured-col">
+            <div class="card bg-light mb-3" style="max-width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Devoured Burger</h5>
+                </div>
+            </div>
         </div>
     </div>
 
 </div>
+
+<script>
+
+    $(document).ready(function () {
+
+
+
+
+        function burgerList(name) {
+            const $newDiv = $("<div>");
+            const $burgerCard = ($($newDiv).addClass("card bg-light mb-3")).append($($newDiv).addClass("card-body"));
+            const $burgername = $("<h5>").html(name).attr("class", "card-title text-center");
+            $("#new-burger-col").prepend($burgerCard.append($burgername));
+
+        }
+
+        $(".burger-form").on("submit", function (event) {
+            event.preventDefault();
+            $.ajax("/api/burger", {
+                type: "POST",
+                data: newBurger = { burger: $("#burger-input").val().trim() }
+            }).then(function () {
+                console.log(newBurger)
+                location.reload();
+
+            });
+        });
+    });
+
+
+
+
+</script>
