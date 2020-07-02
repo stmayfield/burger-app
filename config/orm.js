@@ -4,9 +4,7 @@ const orm = {
     selectAll: function (table, cb) {
         let queryString = `SELECT * FROM ${table} ORDER BY id DESC;`;
         connection.query(queryString, function (err, res) {
-            if (err) {
-                return res.status(500).end() || err;
-            };
+            if (err) throw err;
             cb(res);
         })
 
