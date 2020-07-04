@@ -29,7 +29,8 @@
             {{#each burger}}
             <div class="card bg-light mb-3" style="max-width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title text-center">{{burger_name}}</h5>
+                    <h5 class="card-title text-center" id=burger-{{id}}>{{burger_name}} <i class="fas fa-edit"
+                            id=edit-{{id}}></i> <i class="fas fa-hamburger" id=eat-{{id}}></i></h5>
                 </div>
             </div>
             {{/each}}
@@ -58,16 +59,14 @@
 
     $(document).ready(function () {
 
-
-
-
         function burgerList(name) {
             const $newDiv = $("<div>");
             const $burgerCard = ($($newDiv).addClass("card bg-light mb-3")).append($($newDiv).addClass("card-body"));
             const $burgername = $("<h5>").html(name).attr("class", "card-title text-center");
             $("#new-burger-col").prepend($burgerCard.append($burgername));
-
         }
+
+
 
         $(".burger-form").on("submit", function (event) {
             event.preventDefault();
@@ -77,12 +76,39 @@
             }).then(function () {
                 console.log(newBurger)
                 location.reload();
+            });
+        });
+
+
+        $("#edit-2").on("click", function () {
+            $("#burger-2").hide();
+            const $form = $("#burger-2").parent().append($("<form>").addClass("buger-update-form-2"))
+            const $textEdit = $form.append($("<input>").attr({ type: "text", class: "text-center", id: "burger-input-2", name: "burgerName" }))
+            const $submit = $("<input>").attr({ type: "submit", id: "submit-input-2", name: "update-2" })
+            $textEdit.append($submit)
+        })
+
+
+        //const iconBurg = $("<i>").addClass("fas fa-hamburger");
+
+        $("#buger-update-form-2").on("submit", function (event) {
+            event.preventDefault()
+            $.ajax("/api/burger:2", {
+                type: "PUT",
+                data: burgerUpdate = { burger_name: $("#burger-input-2").val().trim() }
+            }).then(function () {
+                console.log(burgerUpdate);
+                $("#burger-2").show();
+                location.reload();
 
             });
         });
+
+
+
+
+
+
     });
-
-
-
 
 </script>

@@ -18,8 +18,12 @@ const orm = {
         });
 
     },
-    updateOne: function () {
-
+    updateOne: function (table, cols, vals, condition, cb) {
+        let queryString = `UPDATE ${table} SET ${cols} = ${vals} WHERE ${condition};`;
+        connection.query(queryString, function (err, res) {
+            if (err) throw err
+            cb(res);
+        });
     }
 };
 

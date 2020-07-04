@@ -15,11 +15,12 @@ const burger = {
 
     },
 
-    updateOne: function () {
-        orm.updateOne();
+    updateOne: function (cols, vals, condition, cb) {
+        orm.updateOne("burgers", cols, vals, condition, function (res) {
+            cb(res);
+        });
     }
 };
-
 module.exports = burger;
 
 
